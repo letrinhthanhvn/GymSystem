@@ -177,21 +177,14 @@ SELECT @Count = COUNT(*) FROM inserted WHERE (inserted.NgayBD > inserted.NgayKT)
     
 END
 
-insert into DangKi(MaNT,MaGT,MaHLV,NgayBD,NgayKT)
-values ('NT41',N'PT 10 buổi','HLV1','2017-11-6','2017-12-6')
 
-DROP TRIGGER before_DangKi_add2
 
-SELECT * FROM DangKi
-SELECT * FROM NguoiTap
 
 CREATE TRIGGER before_DangKi_add2 ON DangKi
     FOR insert, update
 	AS
 BEGIN
-	--declare @MaNT varchar(10) = (SELECT inserted.MaNT FROM inserted)
-    --declare @ngaybd date = ( SELECT inserted.NgayBD FROM inserted)
-	
+
 DECLARE @Count INT = 0
 SELECT @Count = COUNT(*) FROM DangKi,inserted 
 WHERE DangKi.MaNT = inserted.MaNT AND inserted.NgayBD > DangKi.NgayBD AND inserted.NgayBD < DangKi.NgayKT	
