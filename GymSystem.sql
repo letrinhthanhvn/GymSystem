@@ -59,54 +59,12 @@ ALTER TABLE HLV
 ADD CONSTRAINT GioiTinh CHECK(HLV.GioiTinh = N'Nam' OR HLV.GioiTinh = N'Nữ')
 
 
-INSERT INTO NguoiTap
-VALUES ('1',N'Lê Trịnh Thành','098899919','1997-10-15',N'Nam')
-
-INSERT INTO NguoiTap
-VALUES ('2',N'Công Linh','09992349919','1997-11-12',N'Nam')
-
-SELECT * FROM NguoiTap
-
-INSERT INTO GoiTap
-VALUES (N'1 tháng',300000,N'')
-INSERT INTO GoiTap
-VALUES (N'3 tháng',700000,N'')
-INSERT INTO GoiTap
-VALUES (N'6 tháng',1400000,N'')
-INSERT INTO GoiTap
-VALUES (N'1 năm',2500000,N'')
-INSERT INTO GoiTap
-VALUES (N'PT 10 buổi',3000000,N'Thời hạn gói tập là 1 tháng kể từ ngày đăng ký gói tập. Người tập và huần luyện viên tự sắp xếp thời gian hợp lý để thuận tiện trong quá trình tập luyện!')
-INSERT INTO GoiTap
-VALUES (N'PT 20 buổi',5000000,N'Thời hạn gói tập là 2 tháng kể từ ngày đăng ký gói tập. Người tập và huần luyện viên tự sắp xếp thời gian hợp lý để thuận tiện trong quá trình tập luyện!')
-INSERT INTO GoiTap
-VALUES (N'PT 30 buổi',7500000,N'Thời hạn gói tập là 3 tháng kể từ ngày đăng ký gói tập. Người tập và huần luyện viên tự sắp xếp thời gian hợp lý để thuận tiện trong quá trình tập luyện!')
-
-INSERT INTO NvQLHlv
-VALUES ('1',N'Lê Văn Chương','099123900','1998-1-15',N'Nam')
-
-INSERT INTO HLV
-VALUES ('1',N'Nguyễn Đức Cường','099123001','1995-9-10',N'Nam','1')
-
-INSERT INTO DangKi(MaNT,MaGT,MaHLV,NgayBD,NgayKT)
-VALUES ('NT3',N'PT 40 buổi','HLV3','2017-12-4','2018-2-4')
-
-
-INSERT INTO DangKi(MaNT,MaGT,MaHLV,NgayKT)
-VALUES ('2',N'1 tháng','','2017-12-4','2018-1-4')
 
 SELECT * FROM DangKi
 
 SELECT * FROM GoiTap
 
-DROP TABLE DangKi
-DROP TABLE GoiTap
-
-
 SELECT * FROM NvQLHlv
-
-SELECT * FROM dbo.DangKi,dbo.GoiTap 
-WHERE GoiTap.MaGT = DangKi.MaGT
 
 CREATE TABLE TaiKhoan
 (
@@ -115,10 +73,7 @@ CREATE TABLE TaiKhoan
 	Type varchar(1) DEFAULT 0
 )
 
-DROP TABLE TaiKhoan
 
-INSERT INTO TaiKhoan
-VALUES ('thanh','1','1')
 
 SELECT GioiTinh,count(GioiTinh) SoLuong FROM NguoiTap
 GROUP BY GioiTinh
